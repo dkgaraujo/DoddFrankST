@@ -13,3 +13,4 @@ To install this package, please run:
 To see an illustration of how to use it, please run:
 
     vignette("DoddFrankST")
+![DoddFrankST](https://user-images.githubusercontent.com/16483074/140545591-ab685cb7-cc1c-456b-b695-4466272ef3fc.png)
