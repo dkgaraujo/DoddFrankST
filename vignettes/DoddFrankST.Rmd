@@ -1,0 +1,58 @@
+---
+title: "DoddFrankST"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{DoddFrankST}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+knitr::opts_chunk$set(include = FALSE)
+library(DoddFrankST)
+library(dplyr)
+```
+
+The API is very simple: there is only one function. Its only objective is to return the results of the Dodd-Frank Act Stress Tests to the user in a format that is easy to use with other R functions.
+
+```{r}
+stress_test_results <- bank_results()
+```
+
+When in doubt about the exact definition of the variables, you can find the official data dictionary in the U.S. Board of Governors of the Federal Reserve System's (website)[https://www.federalreserve.gov/supervisionreg/files/DFAST_data_dictionary.pdf].
+
+You can see the scenarios available (and their codes) with:
+```{r}
+stress_test_results %>% 
+  select(scenario_id, scenario_name) %>% 
+  unique()
+```
+
+For example, to plot the time series of the estimated loan loss rate for each bank under the supervisory severly adverse scenario (code = 3 as we saw above), you may use the following code:
+
+```{r}
+library(ggplot2)
+
+stress_test_results %>% 
+  filter(scenario_id == 3) %>% 
+  ggplot(aes(
+    x = dt_exercise_quarter, 
+    y = loss_total_loan_rate, 
+    color = as.factor(disclosure_legal_name))
+    ) +
+  geom_line(show.legend = FALSE) +
+  labs(
+    title = "Total projected loan loss, severely adverse scenario",
+    x = "Exercise reference period",
+    y = "% of projected average loans"
+  ) +
+  theme(legend.position = "none")
+```
+
