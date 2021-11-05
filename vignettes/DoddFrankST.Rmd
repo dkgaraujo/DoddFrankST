@@ -14,8 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 ```{r setup}
-knitr::opts_chunk$set(include = FALSE)
+#knitr::opts_chunk$set(include = FALSE)
 library(DoddFrankST)
 library(dplyr)
 ```
@@ -26,7 +27,7 @@ The API is very simple: there is only one function. Its only objective is to ret
 stress_test_results <- bank_results()
 ```
 
-When in doubt about the exact definition of the variables, you can find the official data dictionary in the U.S. Board of Governors of the Federal Reserve System's (website)[https://www.federalreserve.gov/supervisionreg/files/DFAST_data_dictionary.pdf].
+When in doubt about the exact definition of the variables, you can find the official data dictionary in the U.S. Board of Governors of the Federal Reserve System's [website](https://www.federalreserve.gov/supervisionreg/files/DFAST_data_dictionary.pdf).
 
 You can see the scenarios available (and their codes) with:
 ```{r}

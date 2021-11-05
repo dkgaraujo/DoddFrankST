@@ -12,4 +12,4 @@ To install this package, please run:
 
 To see an illustration of how to use it, please run:
 
-    vignette(DoddFrankST)
+    vignette("DoddFrankST")
