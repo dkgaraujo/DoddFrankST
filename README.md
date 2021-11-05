@@ -6,7 +6,7 @@
 
 To install this package, please run:
 
-    devtools::install_github("dkgaraujo/DoddFrankST")
+    devtools::install_github("dkgaraujo/DoddFrankST", build_vignettes = TRUE)
 
 ## Usage
 
